@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción POO</title>
+    <style>
+        body{
+            background-color: rgb(103, 103, 178);
+        }
+        form{
+            border: 1px solid black;
+            width: 40%;
+            text-align: center;
+            background-color: blueviolet;
+            margin-left: 200px;
+            height: 100px;
+            padding: 10px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inicio POO</h1>
+    <nav>
+        <a href="ej1.html">Ejercicio 1</a>
+        <a href="eje2.html">Ejercicio 2</a>
+        <a href="eje3.html">Ejercicio 3</a>
+        <a href="eje4.html">Ejercicio 4</a>
+        <a href="eje5.html">Ejercicio 5</a>
+    </nav>
+    <br>
+    <h2>Concesionaria de Autos Ford</h2>
+    <form action="">
+        <label for="nombre">Ingrese la marca del auto:</label>
+        <input type="text" id="marca"><br>
+        <label for="edad">Ingrese el modelo:</label>
+        <input type="text" id="modelo"><br>
+        <label for="carrera">Ingrese color:</label>
+        <input type="text" id="color"><br>
+        <label for="carrera">Ingrese precio:</label>
+        <input type="text" id="precio"><br>
+        <input type="button" onclick="ingresarnuevoauto()" value="Ingresar">
+    </form>
+    <p>Listado de alumnos</p>
+
+    <!-- Botones para mostrar la información y saludar -->
+    <input type="button" onclick="mostrarInformacion()" value="Mostrar Información">
+    <input type="button" onclick="Bienvenida()" value="Saludar">
+
+    <p id="mensaje">
+
+    </p>
+    <p id="saludo">
+
+    </p>
+
+
+
+<script>
+    var Coche1
+    function ingresarnuevoauto() {
+        const marca = document.getElementById("marca").value;
+        const modelo = document.getElementById("modelo").value;
+        const color = document.getElementById("color").value;
+        const precio = document.getElementById("precio").value;
+        var nombre = "Concesionaria Ford PICCO";
+
+        
+        Coche1 = new Coche(nombre, marca, modelo, color,precio);
+        
+    }
+
+    // Función para mostrar la información del alumno
+    function mostrarInformacion() {
+        
+        document.getElementById("mensaje").innerHTML = Coche1.mostrarInfo();
+        
+    }
+
+    // Función para saludar al alumno
+    function Bienvenida() {
+        
+        document.getElementById("saludo").innerHTML = Coche1.saludar();
+        
+    }
+
+    class Coche {
+        constructor(nombre,marca, modelo, color, precio) {
+            this.nombre= nombre;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.color = color;
+            this.precio= precio
+        }
+
+        mostrarInfo() {
+            return "Usted compro " + this.marca + " modelo " + this.modelo + " color " + this.color + " al precio $ " + this.precio 
+        }
+
+        saludar() {
+            return "Bienvenido a la  "+ this.nombre 
+        }
+    }
+
+    
+</script>
+
+</body>
+</html>

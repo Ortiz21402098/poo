@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejercicio Videojuego Simple</title>
+</head>
+<body>
+    <h1>Videojuego</h1>
+
+    <label>Nombre del juego:</label>
+    <input type="text" id="nombre"><br><br>
+
+    <label>Género:</label>
+    <input type="text" id="genero"><br><br>
+
+    <button onclick="crearJuego()">Crear juego</button><br><br>
+
+    <button onclick="iniciarJuego()">Iniciar juego</button>
+    <button onclick="pausarJuego()">Pausar juego</button>
+
+    <p id="estado"></p>
+
+<script>
+
+class Videojuego {
+    constructor(nombre, genero) {
+        this.nombre = nombre;
+        this.genero = genero;
+        this.enEjecucion = false;
+    }
+
+    iniciar() {
+        this.enEjecucion = true;
+    }
+
+    pausar() {
+        this.enEjecucion = false;
+    }
+
+    mostrarEstado() {
+        if (this.enEjecucion == true) {
+            return "El juego" + this.nombre +" está en ejecución" ;
+        } else {
+            return "El juego" + this.nombre + " está pausado";
+        }
+    }
+}
+
+var miJuego;
+
+function crearJuego() {
+    var nombre = document.getElementById("nombre").value;
+    var genero = document.getElementById("genero").value;
+
+    miJuego = new Videojuego(nombre, genero);
+
+    document.getElementById("estado").innerHTML = "Juego creado:" + miJuego.nombre + "Género" + miJuego.genero+ "Está pausado.";
+}
+
+function iniciarJuego() {
+        miJuego.iniciar();
+        document.getElementById("estado").innerHTML = miJuego.mostrarEstado();
+    
+}
+
+function pausarJuego() {
+    miJuego.pausar();
+    document.getElementById("estado").innerHTML = miJuego.mostrarEstado();
+    
+}
+</script>
+
+</body>
+</html>
+
+

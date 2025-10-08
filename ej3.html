@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <h1>Registro de libros</h1>
+    <form action="">
+        <label for="">Nombre del libro</label>
+        <input type="text" id="nombre_l1"><br>
+        <label for="">Autor</label>
+        <input type="text" id="autor_l1"><br>
+        <label for="">Genero</label>
+        <input type="text" id="genero_l1">
+        <input type="checkbox" id="estado_l1">Marcar como leido
+        <br><hr>
+        <label for="">Nombre del libro</label>
+        <input type="text" id="nombre_l2"><br>
+        <label for="">Autor</label>
+        <input type="text" id="autor_l2"><br>
+        <label for="">Genero</label>
+        <input type="text" id="genero_l2">
+        <input type="checkbox"  id="estado_l2">Marcar como leido
+        <br>
+        <input type="button" onclick="registrar()" value="Registrar">
+    </form>
+
+    <p id="mostrar"></p>
+</body>
+</html>
+
+<script>
+    function registrar(){
+        //variables del formulario libro 1
+        var nombre_l1= document.getElementById("nombre_l1").value
+        var autor_l1 = document.getElementById("autor_l1").value
+        var genero_l1 = document.getElementById("genero_l1").value
+        var estado_l1= document.getElementById("estado_l1").checked;
+        // libro 2
+        var nombre_l2= document.getElementById("nombre_l2").value
+        var autor_l2 = document.getElementById("autor_l2").value
+        var genero_l2 = document.getElementById("genero_l2").value
+        var estado_l2= document.getElementById("estado_l2").checked;
+
+        var libro1 = new Libro(nombre_l1,autor_l1,genero_l1,estado_l1)
+        var libro2 = new Libro(nombre_l2,autor_l2,genero_l2,estado_l2)
+
+        document.getElementById("mostrar").innerHTML = libro1.mostrarlibro() + "<br>" + libro2.mostrarlibro()
+    }
+
+    class Libro{
+        constructor(nombre,autor,genero,estado){
+            this.nombre= nombre;
+            this.autor= autor;
+            this.genero= genero;
+            this.estado = estado;
+        }
+
+        mostrarlibro(){
+            var estado = this.mostrarestado();
+            
+            if (estado === true) {
+                var est = "Leído";
+            } else {
+                var est = "No leído";
+            }
+            return "Se ha retirado el libro " + this.nombre + " del autor " + this.autor + ", genero " + this.genero + " y fue " + est
+        }
+
+        mostrarestado(){
+            return this.estado
+        }
+    }
+</script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción POO</title>
+    <style>
+        body{
+            background-color: rgb(103, 103, 178);
+        }
+        form{
+            border: 1px solid black;
+            width: 40%;
+            text-align: center;
+            background-color: blueviolet;
+            margin-left: 200px;
+            height: 100px;
+            padding: 10px;
+        }
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inicio POO</h1>
+    <nav>
+        <a href="ej1.html">Ejercicio 1</a>
+        <a href="eje2.html">Ejercicio 2</a>
+        <a href="eje3.html">Ejercicio 3</a>
+        <a href="eje4.html">Ejercicio 4</a>
+        <a href="eje5.html">Ejercicio 5</a>
+    </nav>
+    <br>
+    <h2>Listado de alumnos</h2>
+    <form action="">
+        <label for="nombre">Ingrese su nombre:</label>
+        <input type="text" id="nombre"><br>
+        <label for="edad">Ingrese su edad:</label>
+        <input type="text" id="edad"><br>
+        <label for="carrera">Ingrese su carrera:</label>
+        <input type="text" id="carrera"><br>
+        <input type="button" onclick="ingresarAlumno()" value="Ingresar">
+    </form>
+    <p>Listado de alumnos</p>
+
+    <!-- Botones para mostrar la información y saludar -->
+    <input type="button" onclick="mostrarInformacion()" value="Mostrar Información">
+    <input type="button" onclick="saludarAlumno()" value="Saludar">
+
+    <p id="mensaje"></p>
+    <p id="saludo"></p>
+
+
+
+<script>
+    class Alumno {
+        constructor(nombre, edad, carrera) {
+            this.nombre = nombre;
+            this.edad = edad;
+            this.carrera = carrera;
+        }
+
+        mostrarInfo() {
+            return "Bienvenido Sr " + this.nombre + " su edad es "+ this.edad + " y su carrera es " + this.carrera 
+        }
+
+        saludar() {
+            return "Hola "+ this.nombre + " elegiste la carrera de " +this.carrera
+        }
+    }
+
+    var alumno
+    function ingresarAlumno() {
+        const nombre = document.getElementById("nombre").value;
+        const edad = document.getElementById("edad").value;
+        const carrera = document.getElementById("carrera").value;
+
+        // Crear la instancia de Alumno
+        alumno = new Alumno(nombre, edad, carrera);
+    }
+
+    // Función para mostrar la información del alumno
+    function mostrarInformacion() {
+        if (alumno) {
+            document.getElementById("mensaje").innerHTML = alumno.mostrarInfo();
+        } else {
+            document.getElementById("mensaje").innerHTML = "Por favor ingrese los datos del alumno primero.";
+        }
+    }
+
+    // Función para saludar al alumno
+    function saludarAlumno() {
+        if (alumno) {
+            document.getElementById("saludo").innerHTML = alumno.saludar();
+        } else {
+            document.getElementById("saludo").innerHTML = "Por favor ingrese los datos del alumno primero.";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h2>Ingreso de estudiantes</h2>
+    <form action="">
+        <label for="nombre">Estudiante1</label>
+        <input type="text" id="Estudiante1"><br>
+        <label for="edad">Nota 1</label>
+        <input type="number" id="Nota1_est1"><br>
+        <label for="carrera">Nota 2</label>
+        <input type="number" id="Nota2_est1"><br><hr>
+        <label for="nombre">Estudiante2</label>
+        <input type="text" id="Estudiante2"><br>
+        <label for="edad">Nota 1</label>
+        <input type="number" id="Nota1_est2"><br>
+        <label for="carrera">Nota 2</label>
+        <input type="number" id="Nota2_est2"><br>
+        <input type="button" onclick="calcularpromedio()" value="Calcular Promedio">
+    </form>
+
+    <p id="mostrar"></p>
+
+    <script>
+        function calcularpromedio(){
+            var Estudiante1 = document.getElementById("Estudiante1").value
+            var Nota1_est1 = parseInt(document.getElementById("Nota1_est1").value)
+            var Nota2_est1 = parseInt(document.getElementById("Nota2_est1").value)
+            
+            var Estudiante2 = document.getElementById("Estudiante2").value
+            var Nota1_est2 = parseInt(document.getElementById("Nota1_est2").value)
+            var Nota2_est2 = parseInt(document.getElementById("Nota2_est2").value)
+
+            Alumno1 = new Estudiante(Estudiante1, Nota1_est1, Nota2_est1);
+            Alumno2 = new Estudiante(Estudiante2, Nota1_est2, Nota2_est2);
+
+            document.getElementById("mostrar").innerHTML = Alumno1.mostrarpromedio() + "<br>" + Alumno2.mostrarpromedio();
+    
+        }
+        
+        var Alumno1
+        var Alumno2
+        class Estudiante{
+            constructor(nombre,nota1, nota2) {
+            this.nombre= nombre;
+            this.nota1 = nota1;
+            this.nota2 = nota2;
+            }
+
+            mostrarpromedio(){
+                var promedio = this.calcularpromedio().toFixed(2);
+                if(promedio>7){
+                    var estado = "Esta aprobado";
+                }else{
+                    var estado = "Esta desaprobado";
+                }
+                return "Estudiante:"+ this.nombre + "|" + "Promedio:" + promedio + "|" + "Estado:" + estado;
+            }
+
+            calcularpromedio(){
+                return (this.nota1 + this.nota2) / 2;
+            }
+        }
+    </script>
+</body>
+</html>

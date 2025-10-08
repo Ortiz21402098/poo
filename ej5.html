@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Videojuego</h1>
+    <form action="">
+        <label for="">Nombre del juego</label>
+        <input type="text" id="Juego">
+        <label for="">Genero del juego</label>
+        <input type="text" id="Genero">
+        <label for="">Nota del juego</label>
+        <input type="text" id="Reseña">
+        <input type="button" onclick="Guardarjuego()" value="Guardarjuego">
+        <input type="button" onclick="jugando()" value="enproceso">
+        <input type="button" onclick="finalizado()" value="finalizado">
+
+
+    </form>
+    <p id="mostrar">
+
+    </p>
+</body>
+</html>
+
+<script>
+    function Guardarjuego(){
+        var juego = document.getElementById("Juego").value
+        var genero = document.getElementById("Genero").value
+        var reseña = document.getElementById("Reseña").value
+
+        juego1 = new Videojuego(juego, genero, reseña)
+        document.getElementById("mostrar").innerHTML = juego1.mostrarVideojuego()
+    }
+
+    function jugando(){
+    document.getElementById("mostrar").innerHTML = juego1.jugando()
+    }
+
+    function finalizado(){
+        document.getElementById("mostrar").innerHTML = juego1.finalizado()
+    }
+    var juego1
+
+    class Videojuego{
+        constructor(juego, genero, reseña){
+            this.juego = juego
+            this.genero = genero
+            this.reseña = reseña
+
+        }
+
+        mostrarVideojuego(){
+            return "El juego es " + this.juego + " el genero es " + this.genero + " su reseña " + this.reseña
+        }
+
+        jugando(){
+            if (this.mostrarVideojugo){
+                return "el juego no esta en ejecucion"
+            }
+            this.mostrarVideojuego=false;
+            return "juego iniciado - a jugar"
+        
+        }
+        finalizado(){
+             if (this.mostrarVideojugo){
+                return "el juego no esta en ejecucion"
+            }
+            this.mostrarVideojuego=true;
+            return "juego finalizado"
+        }
+    }
+
+    
+</script>
